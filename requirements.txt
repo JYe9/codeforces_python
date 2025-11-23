@@ -1,0 +1,12 @@
+# Codeforces Python Environment Requirements
+# Basic dependencies for competitive programming
+
+# For fast I/O and data structures
+numpy>=1.24.0
+
+# Useful for debugging and testing
+pytest>=7.4.0
+
+# Optional: for interactive problems
+# requests>=2.31.0
+
