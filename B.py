@@ -4,18 +4,34 @@
 Codeforces Problem B Template
 """
 
+import sys
+
+sys.setrecursionlimit(2000)
+
 def solve():
-    """
-    Main solution function for problem B
-    """
-    # Read input here
-    n = int(input())
-    
-    # Your solution logic here
-    result = n
-    
-    # Output result
-    print(result)
+    try:
+        line1 = sys.stdin.readline()
+        if not line1: return
+        n = int(line1.strip())
+        
+        line2 = sys.stdin.readline()
+        if not line2: return
+        s = line2.strip()
+    except ValueError:
+        return
+
+    if '0' not in s:
+        print(0)
+        return
+
+    doubled_s = s + s
+    zero_segments = doubled_s.split('1')
+
+    max_zeros = 0
+    for segment in zero_segments:
+        max_zeros = max(max_zeros, len(segment))
+
+    print(max_zeros)
 
 
 def main():

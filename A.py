@@ -3,19 +3,39 @@
 """
 Codeforces Problem A Template
 """
+import sys
 
 def solve():
     """
-    Main solution function for problem A
+    Main solution logic
     """
-    # Read input here
-    n = int(input())
+    try:
+        line = sys.stdin.readline()
+        if not line:
+            return
+        n = int(line.strip())
+        
+        line2 = sys.stdin.readline()
+        if not line2:
+            return
+        a = list(map(int, line2.split()))
+    except ValueError:
+        return
+
+    if n == 0:
+        print(0)
+        return
+
+    current_max = a[0]
+    operations = 0
     
-    # Your solution logic here
-    result = n
-    
-    # Output result
-    print(result)
+    for i in range(1, n):
+        if a[i] < current_max:
+            operations += 1
+        else:
+            current_max = a[i]
+            
+    print(operations)
 
 
 def main():
