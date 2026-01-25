@@ -1,33 +1,62 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Codeforces Problem D Template
+Codeforces Problem D: Monster Game
 """
+
+import sys
+
+sys.setrecursionlimit(2000)
 
 def solve():
     """
     Main solution function for problem D
     """
-    # Read input here
-    n = int(input())
+    input_data = sys.stdin.read().split()
     
-    # Your solution logic here
-    result = n
+    if not input_data:
+        return
+
+    iterator = iter(input_data)
     
-    # Output result
-    print(result)
+    def next_int():
+        return int(next(iterator))
 
+    try:
+        t = next_int()
+    except StopIteration:
+        return
 
-def main():
-    """
-    Handle multiple test cases if needed
-    """
-    t = int(input())  # number of test cases
     for _ in range(t):
-        solve()
-
+        n = next_int()
+        
+        a = [next_int() for _ in range(n)]
+        b = [next_int() for _ in range(n)]
+        
+        a.sort(reverse=True)
+        
+        prefix_b = []
+        current_sum = 0
+        for val in b:
+            current_sum += val
+            prefix_b.append(current_sum)
+            
+        max_score = 0
+        
+        for i in range(n):
+            swords_needed = prefix_b[i]
+            
+            if swords_needed > n:
+                break
+            
+            difficulty_x = a[swords_needed - 1]
+            
+            current_score = difficulty_x * (i + 1)
+            
+            if current_score > max_score:
+                max_score = current_score
+                
+        print(max_score)
 
 if __name__ == "__main__":
-    # For single test case, use: solve()
-    # For multiple test cases, use: main()
-    main()
+    solve()
