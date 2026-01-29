@@ -1,33 +1,52 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
 """
-Codeforces Problem A Template
+Codeforces Problem A
 """
 
 def solve():
     """
     Main solution function for problem A
     """
-    # Read input here
-    n = int(input())
+    try:
+        line = input().split()
+        if not line: return
+        n = int(line[0])
+    except EOFError:
+        return
+
     
-    # Your solution logic here
-    result = n
+    left = (n + 1) // 2
+    right = left + 1
     
-    # Output result
-    print(result)
+    result = []
+    
+    for i in range(n):
+        if i % 2 == 0:
+            result.append(left)
+            left -= 1
+        else:
+            result.append(right)
+            right += 1
+            
+    print(*result)
 
 
 def main():
     """
-    Handle multiple test cases if needed
+    Handle multiple test cases
     """
-    t = int(input())  # number of test cases
-    for _ in range(t):
-        solve()
-
+    try:
+        t_str = input().strip()
+        if not t_str: return
+        t = int(t_str)
+        
+        for _ in range(t):
+            solve()
+            
+    except (EOFError, ValueError):
+        pass
 
 if __name__ == "__main__":
-    # For single test case, use: solve()
-    # For multiple test cases, use: main()
     main()
