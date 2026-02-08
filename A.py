@@ -4,30 +4,40 @@
 Codeforces Problem A Template
 """
 
+import sys
+
+input = sys.stdin.readline
+
 def solve():
     """
     Main solution function for problem A
     """
-    # Read input here
-    n = int(input())
+    try:
+        line = input().split()
+        if not line: return
+        n = int(line[0])
+        w = int(line[1])
+    except ValueError:
+        return
+
     
-    # Your solution logic here
-    result = n
+    removed_boards = n - (n // w)
     
-    # Output result
-    print(result)
+    print(removed_boards)
 
 
 def main():
     """
-    Handle multiple test cases if needed
+    Handle multiple test cases
     """
-    t = int(input())  # number of test cases
-    for _ in range(t):
-        solve()
-
+    try:
+        t_str = input().strip()
+        if not t_str: return
+        t = int(t_str)  # number of test cases
+        for _ in range(t):
+            solve()
+    except ValueError:
+        pass
 
 if __name__ == "__main__":
-    # For single test case, use: solve()
-    # For multiple test cases, use: main()
     main()
