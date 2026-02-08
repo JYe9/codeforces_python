@@ -53,6 +53,35 @@ python main.py A        # Test problem A
 python main.py B        # Test problem B
 ```
 
+### Auto-Verification Feature
+
+The test runner automatically compares your output with `output.txt` and shows pass/fail indicators:
+
+```
+Verification Results:
+==================================================
+  #   Got   Expected
+--------------------------------------------------
+  1   ✓ 6     6
+  2   ✓ 10    10
+  3   ✗ 15    14       <- Red ✗ for wrong answer
+  4   ✓ 0     0
+--------------------------------------------------
+Failed: 3/4 passed
+==================================================
+```
+
+**Usage:**
+```bash
+python main.py A              # Run with auto-verification (default)
+python main.py A --no-verify  # Run without verification
+```
+
+**How to use:**
+1. Copy sample input to `input.txt`
+2. Copy expected output to `output.txt`
+3. Run `python main.py A` - instantly see which test cases pass or fail
+
 ### Method 2: Direct Execution
 
 ```bash
